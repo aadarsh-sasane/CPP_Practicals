@@ -1,0 +1,69 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+class Employee {
+private:
+    int empId;
+    string name;
+    float basicSalary;
+    float bonus;
+    float totalSalary;
+
+public:
+    // Default Constructor
+    Employee() : empId(0), name("Unknown"), basicSalary(0),
+                 bonus(0), totalSalary(0) {
+        cout << "Default constructor called" << endl;
+    }
+
+    // Parameterized Constructor
+    Employee(int id, string n, float salary, float b) {
+        empId = id;
+        name = n;
+        basicSalary = salary;
+        bonus = b;
+        calculateTotalSalary();
+
+        cout << "Parameterized constructor called" << endl;
+    }
+
+    void calculateTotalSalary() {
+        totalSalary = basicSalary + bonus;
+    }
+
+    void display() const {
+        cout << "Employee ID : " << empId << endl;
+        cout << "Name : " << name << endl;
+        cout << "Basic Salary : " << basicSalary << endl;
+        cout << "Bonus : " << bonus << endl;
+        cout << "Total Salary : " << totalSalary << endl;
+    }
+};
+
+int main() {
+    Employee emp1;
+
+    emp1.display();
+
+    Employee emp2(101, "John Doe", 50000, 10000);
+
+    emp2.display();
+
+    return 0;
+}
+
+
+//Default constructor called
+//Employee ID : 0
+//Name : Unknown
+//Basic Salary : 0
+//Bonus : 0
+//Total Salary : 0
+
+//Parameterized constructor called
+//Employee ID : 101
+//Name : John Doe
+//Basic Salary : 50000
+//Bonus : 10000
+//Total Salary : 60000
